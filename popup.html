@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-i18n="documentTitle">Scan and download images</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <img src="icons/brand.svg" alt="">
+          </div>
+          <div>
+            <p class="eyebrow">IMAGE GRABBER</p>
+            <h1 data-i18n="heading">Images on this page</h1>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme">
+            <svg class="theme-icon" data-theme-icon="moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.2 15.4A8.5 8.5 0 0 1 8.6 3.8 8.6 8.6 0 1 0 20.2 15.4Z"></path>
+            </svg>
+            <svg class="theme-icon" data-theme-icon="sun" viewBox="0 0 24 24" aria-hidden="true" hidden>
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+            </svg>
+          </button>
+          <button id="scan" class="scan-button" type="button" data-i18n-aria-label="scan" data-i18n-title="scan">
+            <img class="button-icon scan-icon" src="icons/scan.svg" alt="">
+            <span data-i18n="scan">Scan images</span>
+          </button>
+        </div>
+      </header>
+      <p id="status" class="status" role="status"></p>
+      <section class="folder-settings" data-i18n-aria-label="downloadFolder" aria-label="Image download folder">
+        <label for="download-folder" data-i18n="downloadFolder">Image download folder</label>
+        <div class="folder-controls">
+          <input id="download-folder" type="text" value="images" placeholder="images" data-i18n-placeholder="folderPlaceholder" data-i18n-aria-label="downloadFolder">
+          <button id="save-folder" class="save-folder-button" type="button" data-i18n="saveFolder">Save</button>
+        </div>
+        <p class="folder-hint" data-i18n="folderHint">A subfolder in Downloads; nested folders are supported, e.g. images/site.</p>
+      </section>
+      <div class="toolbar">
+        <div class="selection-summary">
+          <span id="count" class="count"></span>
+          <label class="select-all">
+            <input id="select-all" type="checkbox" disabled>
+            <span data-i18n="selectAll">Select all</span>
+          </label>
+        </div>
+        <button id="download-selected" class="download-button" type="button" disabled>
+          <img class="button-icon" src="icons/download.svg" alt="">
+          <span data-i18n="downloadSelected">Download selected</span>
+        </button>
+      </div>
+      <ul id="images" data-i18n-aria-label="imageList" aria-label="Image list"></ul>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
