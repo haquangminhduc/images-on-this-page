@@ -43,6 +43,10 @@
         </div>
         <p class="folder-hint" data-i18n="folderHint">A subfolder in Downloads; nested folders are supported, e.g. images/site.</p>
       </section>
+      <section class="page-links">
+        <label for="page-links" data-i18n="pageLinks">Website links (optional, one per line)</label>
+        <textarea id="page-links" rows="3" data-i18n-placeholder="linksPlaceholder" placeholder="https://example.com"></textarea>
+      </section>
       <div class="toolbar">
         <div class="selection-summary">
           <span id="count" class="count"></span>
@@ -55,6 +59,7 @@
           <img class="button-icon" src="icons/download.svg" alt="">
           <span data-i18n="downloadSelected">Download selected</span>
         </button>
+        <button id="download-zip" class="zip-button" type="button" disabled data-i18n="downloadZip">Download ZIP</button>
       </div>
       <ul id="images" data-i18n-aria-label="imageList" aria-label="Image list"></ul>
     </main>

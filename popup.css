@@ -13,8 +13,8 @@
 }
 
 body {
-  width: 420px;
-  max-height: 620px;
+  width: 880px;
+  min-height: 680px;
   margin: 0;
   color: var(--ink);
   background: #f7f8fc;
@@ -235,6 +235,35 @@ button:disabled {
   font-size: 10px;
 }
 
+.page-links {
+  margin-bottom: 8px;
+}
+
+.page-links label {
+  display: block;
+  margin-bottom: 5px;
+  color: #69758b;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.page-links textarea {
+  display: block;
+  width: 100%;
+  min-height: 58px;
+  resize: vertical;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--surface);
+  font: inherit;
+}
+
+.page-links textarea:disabled {
+  opacity: 0.6;
+}
+
 .toolbar {
   justify-content: space-between;
   gap: 8px;
@@ -296,8 +325,24 @@ input[type="checkbox"]:disabled {
   transform: translateY(-1px);
 }
 
+.zip-button {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--blue-dark);
+  background: var(--surface);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.zip-button:hover:not(:disabled) {
+  border-color: #cdd5ff;
+  background: #f0f2ff;
+}
+
 #images {
-  max-height: 340px;
+  max-height: 440px;
   margin: 0;
   padding: 1px 3px 4px 1px;
   overflow-y: auto;
@@ -315,12 +360,18 @@ input[type="checkbox"]:disabled {
   border-radius: 12px;
   background: var(--surface);
   box-shadow: 0 2px 6px #24304d08;
-  transition: border-color 140ms ease, box-shadow 140ms ease;
+  cursor: pointer;
+  transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
 }
 
 .image-item:hover {
   border-color: #d9deff;
   box-shadow: 0 4px 12px #24304d0d;
+}
+
+.image-item.is-selected {
+  border-color: #bfc8ff;
+  background: #f7f8ff;
 }
 
 .image-item img {
@@ -416,6 +467,17 @@ input:focus-visible {
   background: var(--surface);
 }
 
+:root[data-theme="dark"] .zip-button {
+  border-color: var(--line);
+  color: #b6c0ff;
+  background: var(--surface);
+}
+
+:root[data-theme="dark"] .zip-button:hover:not(:disabled) {
+  border-color: #505b83;
+  background: #303852;
+}
+
 :root[data-theme="dark"] .eyebrow,
 :root[data-theme="dark"] .folder-hint {
   color: #8c97af;
@@ -445,12 +507,14 @@ input:focus-visible {
 }
 
 :root[data-theme="dark"] .folder-settings > label,
+:root[data-theme="dark"] .page-links label,
 :root[data-theme="dark"] .count,
 :root[data-theme="dark"] .select-all {
   color: #b1bbd0;
 }
 
-:root[data-theme="dark"] .folder-controls input {
+:root[data-theme="dark"] .folder-controls input,
+:root[data-theme="dark"] .page-links textarea {
   border-color: var(--line);
   color: var(--ink);
   background: var(--surface);
@@ -469,6 +533,11 @@ input:focus-visible {
 :root[data-theme="dark"] .image-item:hover {
   border-color: #505b83;
   box-shadow: 0 4px 12px #00000030;
+}
+
+:root[data-theme="dark"] .image-item.is-selected {
+  border-color: #6979cf;
+  background: #252c48;
 }
 
 :root[data-theme="dark"] .image-item img {

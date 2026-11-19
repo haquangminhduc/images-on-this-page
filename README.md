@@ -1,40 +1,39 @@
 # Image Grabber
 
-Image Grabber is a lightweight Chrome/Edge extension for finding and downloading images from the current webpage.
+Image Grabber is a lightweight Chrome and Edge extension for finding images on a webpage or across multiple URLs, then downloading selected images individually or as a ZIP archive.
 
 ## Features
 
-- Scan all images on the current page
-- Include `img`, `srcset`, and CSS background images
-- Select individual images or select all images
-- Download images one by one or download all selected images
-- Choose a subfolder inside the browser Downloads directory
+- Scan the active webpage or multiple HTTP/HTTPS URLs, one per line
+- Find regular images, responsive `srcset` candidates, and CSS background images
+- Preview results and select individual images or all results
+- Download images individually, as separate files, or in a ZIP archive
+- Choose a subfolder under the browser's Downloads directory
+- Use a separate window that stays open when switching browser tabs
+- Restore the URL list, scan results, and selections when reopening the window
 - Switch between light and dark themes
-- English interface
-- Save theme and download-folder preferences locally
 
-## Installation
-
-### Install manually in Chrome or Edge
+## Install
 
 1. Download or clone this repository.
 2. Open `chrome://extensions/` in Chrome or `edge://extensions/` in Edge.
-3. Enable **Developer mode**.
-4. Click **Load unpacked**.
-5. Select the extension folder containing `manifest.json`.
-6. Pin **Image Grabber** in the browser toolbar if needed.
+3. Turn on **Developer mode**.
+4. Select **Load unpacked** and choose the folder containing `manifest.json`.
+5. Pin **Image Grabber** to the browser toolbar if needed.
 
-## Usage
+## Use
 
-1. Open a regular webpage.
-2. Click the **Image Grabber** extension icon.
-3. Click **Scan images**.
-4. Select the images you want.
-5. Click **Download** for one image or **Download selected** for several images.
+1. Click the **Image Grabber** toolbar icon to open its window. Clicking the icon again focuses the existing window.
+2. Leave the URL field empty to scan the active webpage, or paste one HTTP/HTTPS URL per line.
+3. Click **Scan images**. When prompted, allow access to the websites you want to scan.
+4. Select images from the results.
+5. Click **Download** for one image, **Download selected** for separate files, or **Download ZIP** to bundle the selection.
 
-## Download folder
+URLs are scanned one at a time in temporary background tabs, which are closed after each scan. Duplicate image URLs found on multiple pages appear only once.
 
-Enter a subfolder name in the **Image download folder** field, then click **Save**.
+## Downloads
+
+Downloads are saved under the browser's Downloads directory. Set **Image download folder** to choose a subfolder, then click **Save**.
 
 Examples:
 
@@ -42,28 +41,27 @@ Examples:
 - `images/site`
 - `project/screenshots`
 
-The folder is created under the browser's Downloads directory. Chrome extensions cannot choose an arbitrary location outside Downloads through this API.
+The browser downloads API cannot save to an arbitrary location outside Downloads.
 
-## Theme
+## Permissions and privacy
 
-Use the moon or sun icon in the popup header to switch between light and dark themes.
+- `activeTab` and `scripting` are used to inspect the active page when no URLs are supplied.
+- Optional per-site access is requested only when scanning the URLs you enter.
+- `downloads` is used to save selected images and ZIP archives.
+- `storage` saves the theme, download folder, URL list, scan results, and selections locally in the browser.
 
-## Permissions
+No external service or build step is required.
 
-- `activeTab`: Access the page selected by the user
-- `scripting`: Scan image elements and CSS background images
-- `downloads`: Download selected images
-- `storage`: Save theme and download-folder preferences
+## Limitations
+
+Some pages may not be scannable if they require sign-in, block extension access, rely on content that has not loaded yet, or use expiring image URLs. ZIP creation can also fail if an image host does not allow the extension to retrieve an image.
 
 ## Development
 
 The extension uses plain HTML, CSS, and JavaScript.
 
-Main files:
-
-- `manifest.json`: Chrome extension configuration
-- `popup.html`: Popup interface
-- `popup.css`: Styles and themes
-- `popup.js`: Scanning, downloading, and preference logic
-
-No build step or external dependency is required.
+- `manifest.json` — extension configuration
+- `background.js` — opens and focuses the separate scan window
+- `popup.html` — extension interface
+- `popup.css` — layout and themes
+- `popup.js` — scanning, downloads, and saved state
