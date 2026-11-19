@@ -1,5 +1,3 @@
-<img width="518" height="330" alt="image" src="https://github.com/user-attachments/assets/9918dbdf-d938-4134-8922-1c29e37f6b41" />
-
 # Image Grabber
 
 Image Grabber is a lightweight Chrome/Edge extension for finding and downloading images from the current webpage.
@@ -34,3 +32,38 @@ Image Grabber is a lightweight Chrome/Edge extension for finding and downloading
 4. Select the images you want.
 5. Click **Download** for one image or **Download selected** for several images.
 
+## Download folder
+
+Enter a subfolder name in the **Image download folder** field, then click **Save**.
+
+Examples:
+
+- `images`
+- `images/site`
+- `project/screenshots`
+
+The folder is created under the browser's Downloads directory. Chrome extensions cannot choose an arbitrary location outside Downloads through this API.
+
+## Theme
+
+Use the moon or sun icon in the popup header to switch between light and dark themes.
+
+## Permissions
+
+- `activeTab`: Access the page selected by the user
+- `scripting`: Scan image elements and CSS background images
+- `downloads`: Download selected images
+- `storage`: Save theme and download-folder preferences
+
+## Development
+
+The extension uses plain HTML, CSS, and JavaScript.
+
+Main files:
+
+- `manifest.json`: Chrome extension configuration
+- `popup.html`: Popup interface
+- `popup.css`: Styles and themes
+- `popup.js`: Scanning, downloading, and preference logic
+
+No build step or external dependency is required.

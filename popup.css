@@ -105,6 +105,18 @@ main {
   letter-spacing: 1.25px;
 }
 
+.author-signature {
+  margin-left: 2px;
+  padding: 1px 3px;
+  border-radius: 4px;
+  color: #6875c5;
+  background: #edf0ff;
+  font-size: 7px;
+  font-weight: 650;
+  letter-spacing: 0;
+  vertical-align: 1px;
+}
+
 h1 {
   margin: 0;
   font-size: 17px;
@@ -407,6 +419,11 @@ input:focus-visible {
 :root[data-theme="dark"] .eyebrow,
 :root[data-theme="dark"] .folder-hint {
   color: #8c97af;
+}
+
+:root[data-theme="dark"] .author-signature {
+  color: #bbc4ff;
+  background: #303852;
 }
 
 :root[data-theme="dark"] .scan-button {
